@@ -5,6 +5,8 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+ARCH=amd64
+PLATFORM=$(uname -s)_$ARCH
 
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
@@ -63,3 +65,18 @@ docker compose version
 VALIDATE $? "Installed docker compose"
 
 echo -e "$R Logout and login again $N"
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   
+chmod +x kubectl
+
+mv kubectl /usr/local/bin/kubectl
+
+VALIDATE $? "Kubectl installation"
+
+curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+
+tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+
+
+sudo mv /tmp/eksctl /usr/local/bin
