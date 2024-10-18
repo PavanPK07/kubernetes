@@ -7,14 +7,14 @@ metadata:
     app: mongodb
     project: roboshop
     tier: db
-  spec:
+spec:
   replicas: 1
   selector:
     matchLabels: # these labels are used to find the pods
       app: mongodb
       project: roboshop
       tier: db
-    template:
+  template:
     metadata:
       labels: # these labels are pod labels
         app: mongodb
