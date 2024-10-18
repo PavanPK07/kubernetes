@@ -6,6 +6,6 @@ spec:
   containers:
   - name: config-pod
     image: nginx
-    ports
+    ports:
     - containerPort: 80
 
