@@ -5,7 +5,7 @@ metadata:
   namespace: roboshop
 data:
   MONGO: "true"
-----
+---
 apiversion: apps/v1
 kind: Deployment
 metadata:
@@ -36,7 +36,7 @@ spec:
         envFrom:
         - configMapRef:
             name: catalogue
-----
+---
 apiVersion: v1
 kind: Service
 metadata:
